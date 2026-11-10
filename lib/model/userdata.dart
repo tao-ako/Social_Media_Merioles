@@ -44,6 +44,7 @@ class UserData {
 
   static const posts = [
     UserPost(
+      id: 'john-beach',
       username: 'John Doe',
       time: '2 hours ago',
       caption: 'Had a great day at the beach!',
@@ -54,6 +55,7 @@ class UserData {
       comments: _comments,
     ),
     UserPost(
+      id: 'alice-weekend',
       username: 'Alice Williams',
       time: 'Yesterday',
       caption: 'A little weekend adventure with my favorite people ✨',
@@ -64,6 +66,7 @@ class UserData {
       comments: _comments,
     ),
     UserPost(
+      id: 'bob-moments',
       username: 'Bob Martin',
       time: '2 days ago',
       caption: 'Making the most of every moment.',
@@ -74,6 +77,7 @@ class UserData {
       comments: _comments,
     ),
     UserPost(
+      id: 'sophia-memories',
       username: 'Sophia Lee',
       time: '3 days ago',
       caption: 'Good vibes and even better memories 💜',

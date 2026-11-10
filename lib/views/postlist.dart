@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../model/userpost.dart';
+import '../model/commentstore.dart';
 import '../model/userdata.dart';
+import '../model/userpost.dart';
 import 'common.dart';
 import 'postdetailsview.dart';
 
@@ -10,18 +11,23 @@ class PostList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SectionHeading(title: 'Latest Posts', trailing: 'See all'),
-        const SizedBox(height: 12),
-        ...UserData.posts.map(
-          (post) => Padding(
+    return SliverPadding(
+      padding: const EdgeInsets.fromLTRB(18, 0, 18, 24),
+      sliver: SliverList.builder(
+        itemCount: UserData.posts.length + 1,
+        itemBuilder: (context, index) {
+          if (index == 0) {
+            return const Padding(
+              padding: EdgeInsets.only(bottom: 12),
+              child: SectionHeading(title: 'Latest Posts', trailing: 'See all'),
+            );
+          }
+          return Padding(
             padding: const EdgeInsets.only(bottom: 16),
-            child: _PostCard(post: post),
-          ),
-        ),
-      ],
+            child: _PostCard(post: UserData.posts[index - 1]),
+          );
+        },
+      ),
     );
   }
 }
@@ -93,12 +99,15 @@ class _PostCard extends StatelessWidget {
               aspectRatio: 1.18,
               child: Image.asset(post.image, fit: BoxFit.cover),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8, 12, 8, 12),
-              child: PostActions(
-                likes: post.likes,
-                comments: post.comments.length,
-                shares: post.shares,
+            ListenableBuilder(
+              listenable: CommentStore.instance,
+              builder: (context, _) => Padding(
+                padding: const EdgeInsets.fromLTRB(8, 12, 8, 12),
+                child: PostActions(
+                  likes: post.likes,
+                  comments: CommentStore.instance.commentsFor(post).length,
+                  shares: post.shares,
+                ),
               ),
             ),
           ],

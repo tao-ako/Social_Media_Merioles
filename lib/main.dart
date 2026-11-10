@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'model/commentstore.dart';
 import 'socialmedia.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CommentStore.initialize();
   runApp(const TikTokTokApp());
 }

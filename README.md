@@ -1,7 +1,7 @@
 # TikTokTok
 
 A Flutter social app demo with a validated login, profile and friends grid,
-scrollable posts, and post comments.
+efficiently scrolling posts, and locally saved post comments.
 
 ## Run
 
@@ -11,7 +11,8 @@ flutter run
 ```
 
 Any non-empty username and password will open the profile. Post images are
-bundled in `assets/`.
+bundled in `assets/`. New comments are saved on the device and remain available
+after closing and reopening the app.
 
 ## Test
 

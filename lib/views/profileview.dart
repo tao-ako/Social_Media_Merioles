@@ -14,14 +14,20 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const MainHeader(),
-      body: ListView(
-        padding: const EdgeInsets.fromLTRB(18, 0, 18, 24),
-        children: const [
-          InfoHeader(),
-          SizedBox(height: 26),
-          FriendList(),
-          SizedBox(height: 26),
-          PostList(),
+      body: CustomScrollView(
+        slivers: [
+          SliverPadding(
+            padding: const EdgeInsets.fromLTRB(18, 0, 18, 0),
+            sliver: SliverList(
+              delegate: SliverChildListDelegate([
+                const InfoHeader(),
+                const SizedBox(height: 26),
+                const FriendList(),
+                const SizedBox(height: 26),
+              ]),
+            ),
+          ),
+          const PostList(),
         ],
       ),
     );

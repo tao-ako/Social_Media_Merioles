@@ -20,11 +20,13 @@ class FriendList extends StatelessWidget {
             crossAxisCount: 3,
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
-            childAspectRatio: 1.08,
+            mainAxisExtent: 104,
           ),
           itemBuilder: (context, index) {
             final friend = UserData.friends[index];
             return Container(
+              key: ValueKey('friend-${friend.name}'),
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
@@ -33,7 +35,7 @@ class FriendList extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ProfileAvatar(image: friend.image, radius: 23),
+                  ProfileAvatar(image: friend.image, radius: 25),
                   const SizedBox(height: 7),
                   Text(
                     friend.name,

@@ -2,6 +2,7 @@ import 'usercomment.dart';
 
 class UserPost {
   const UserPost({
+    required this.id,
     required this.username,
     required this.time,
     required this.caption,
@@ -12,6 +13,7 @@ class UserPost {
     required this.comments,
   });
 
+  final String id;
   final String username;
   final String time;
   final String caption;
